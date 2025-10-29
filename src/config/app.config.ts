@@ -9,7 +9,7 @@ export interface AppConfig {
 }
 
 export const appConfig = registerAs('app', (): AppConfig => {
-  const port = parseInt(process.env.PORT ?? '5001', 10);
+  const port = parseInt(process.env.PORT ?? '4000', 10);
   const host = process.env.HOST || '0.0.0.0';
   const name = process.env.APP_NAME || 'Gateway Service';
   const env = process.env.NODE_ENV || 'development';
