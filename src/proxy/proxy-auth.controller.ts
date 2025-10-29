@@ -37,7 +37,6 @@ export class ProxyAuthController {
         proxyReq: fixRequestBody,
       },
     });
-    console.log(this.proxy);
   }
 
   @Get('status')
@@ -45,7 +44,7 @@ export class ProxyAuthController {
     return { status: 'auth proxy is ok' };
   }
 
-  @All('*')
+  @All('*path')
   proxyRequests(@Req() req: Request, @Res() res: Response, @Next() next) {
     return this.proxy(req, res, next);
   }
