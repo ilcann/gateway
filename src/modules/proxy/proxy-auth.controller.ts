@@ -1,11 +1,9 @@
-import { All, Controller, Get, Next, Req, Res, UseGuards } from "@nestjs/common";
+import { All, Controller, Get, Next, Req, Res } from "@nestjs/common";
 import { ConfigService } from "@nestjs/config";
 import { createProxyMiddleware, fixRequestBody } from "http-proxy-middleware";
 import { ServicesConfig } from "src/config/services.config";
 import type { Request, Response } from 'express';
-import { AuthGuard } from "@nestjs/passport";
 
-@UseGuards(AuthGuard('jwt'))
 @Controller("/auth")
 export class ProxyAuthController {
   private proxy: any;

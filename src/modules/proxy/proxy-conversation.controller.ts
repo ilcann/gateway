@@ -4,7 +4,6 @@ import { createProxyMiddleware, fixRequestBody } from "http-proxy-middleware";
 import { ServicesConfig } from "src/config/services.config";
 import type { Request, Response } from 'express';
 import { AuthGuard } from "@nestjs/passport";
-import { AccessTokenPayload } from "../auth/interfaces/jwt-payload.interface";
 import { RequestUser } from "../auth/interfaces/request-user";
 
 @UseGuards(AuthGuard('jwt'))
