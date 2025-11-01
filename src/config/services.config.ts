@@ -7,28 +7,28 @@ interface Service {
 
 export interface ServicesConfig {
   auth: Service;
-  messages: Service;
-  filters: Service;
+  message: Service;
+  filter: Service;
 }
 export const servicesConfig = registerAs('services', (): ServicesConfig => {
   const auth: Service = {
-    url: process.env.AUTH_SERVICE_URL || 'http://localhost:5002/api',
+    url: process.env.AUTH_SERVICE_URL || 'http://localhost:5000',
     name: process.env.AUTH_SERVICE_NAME || 'auth-service',
   };
 
-  const messages: Service = {
-    url: process.env.MESSAGES_SERVICE_URL || 'http://localhost:5003/api',
-    name: process.env.MESSAGES_SERVICE_NAME || 'messages-service',
+  const message: Service = {
+    url: process.env.MESSAGES_SERVICE_URL || 'http://localhost:5001/api',
+    name: process.env.MESSAGES_SERVICE_NAME || 'message-service',
   };
 
-  const filters: Service = {
-    url: process.env.FILTERS_SERVICE_URL || 'http://localhost:5004/api',
-    name: process.env.FILTERS_SERVICE_NAME || 'filters-service',
+  const filter: Service = {
+    url: process.env.FILTERS_SERVICE_URL || 'http://localhost:5002/api',
+    name: process.env.FILTERS_SERVICE_NAME || 'filter-service',
   };
 
   return {
     auth,
-    messages,
-    filters,
+    message,
+    filter,
   };
 });
