@@ -3,8 +3,8 @@ import {
   fixRequestBody,
   Options,
 } from 'http-proxy-middleware';
-import { Request, Response } from 'express';
-import { RequestUser } from 'src/modules/auth/interfaces/request-user';
+import { Request } from 'express';
+import { RequestUser } from '@tssx-bilisim/praiven-contracts/auth';
 
 // Fabrikamızın alacağı opsiyonlar
 export interface ProxyFactoryOptions {
@@ -37,8 +37,8 @@ export function createApiProxy(options: ProxyFactoryOptions) {
         if (req.user) {
           // 2. Downstream servislere güvenli başlıklar olarak ekle
           proxyReq.setHeader('x-user-id', req.user.userId);
-          proxyReq.setHeader('x-user-role', req.user.role);
-          proxyReq.setHeader('x-user-is-system', req.user.isSystem.toString());
+          proxyReq.setHeader('x-user-roleId', req.user.roleId);
+          proxyReq.setHeader('x-user-departmentId', req.user.departmentId);
         }
         
         // 3. Request body'sini düzelt
