@@ -1,16 +1,16 @@
-import { Injectable, NestMiddleware } from '@nestjs/common';
+import { Request, Response, NextFunction } from 'express';
 import { createProxyMiddleware, fixRequestBody } from 'http-proxy-middleware';
-import type { Request, Response, NextFunction } from 'express';
+import { ServicesConfig } from 'src/config/services.config';
 import { RequestUser } from 'src/modules/auth/interfaces/request-user';
 
-export function createProxyMiddlewareFactory(target: string, paths: string[]) {
-  @Injectable()
-  class CustomProxyMiddleware implements NestMiddleware {
-    proxy: any;
-
-    constructor() {
-      this.proxy = createProxyMiddleware({
-        target,
+export function createDynamicProxyMiddleware(servicesConfig: ServicesConfig) {
+  const proxies = Object.values(servicesConfig)
+    .filter(s => s.paths && s.paths.length)
+    .map(service => ({
+      target: service.url,
+      paths: service.paths!,
+      proxy: createProxyMiddleware({
+        target: service.url,
         changeOrigin: true,
         logger: console,
         on: {
@@ -29,16 +29,14 @@ export function createProxyMiddlewareFactory(target: string, paths: string[]) {
             }
           },
         },
-      });
-    }
+      }),
+    }));
 
-    use(req: Request, res: Response, next: NextFunction) {
-      if (paths.some(p => req.path.startsWith(p))) {
-        return this.proxy(req, res, next);
-      }
-      next();
+  return (req: Request, res: Response, next: NextFunction) => {
+    const matched = proxies.find(p => p.paths.some(path => req.path.startsWith(path)));
+    if (matched) {
+      return matched.proxy(req, res, next);
     }
-  }
-
-  return CustomProxyMiddleware;
+    next();
+  };
 }
