@@ -37,8 +37,8 @@ export function createApiProxy(options: ProxyFactoryOptions) {
         if (req.user) {
           // 2. Downstream servislere güvenli başlıklar olarak ekle
           proxyReq.setHeader('x-user-id', req.user.userId);
-          proxyReq.setHeader('x-user-roleId', req.user.roleId);
-          proxyReq.setHeader('x-user-departmentId', req.user.departmentId);
+          proxyReq.setHeader('x-user-roleid', req.user.roleId);
+          proxyReq.setHeader('x-user-departmentid', req.user.departmentId);
         }
         
         // 3. Request body'sini düzelt
