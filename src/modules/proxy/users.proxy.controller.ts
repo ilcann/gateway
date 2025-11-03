@@ -28,9 +28,4 @@ export class UsersProxyController {
   proxyUsers(@Req() req: Request, @Res() res: Response) {
     this.proxy(req, res);
   }
-
-  @Get('status')
-  getStatus(@Req() req: Request, @Res() res: Response) {
-    this.proxy(req, res);
-  }
 }
