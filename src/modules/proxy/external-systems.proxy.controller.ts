@@ -24,7 +24,7 @@ export class ExternalSystemsProxyController {
     });
   }
 
-  @Get('health')
+  @Get('proxy-health')
   checkHealth(@Req() req: Request, @Res() res: Response) {
     res.status(200).send('External Systems Proxy is healthy');
   }
