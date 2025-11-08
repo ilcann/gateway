@@ -4,8 +4,8 @@ import { ConfigService } from '@nestjs/config';
 import { createApiProxy } from './utils/proxy.factor';
 import { ServicesConfig } from 'src/config/services.config';
 
-@Controller('policies')
-export class PoliciesProxyController {
+@Controller('entity-categories')
+export class EntityCategoriesProxyController {
   private proxy: (req: Request, res: Response, next?: () => void) => void;
 
   constructor(private configService: ConfigService) {
@@ -24,7 +24,7 @@ export class PoliciesProxyController {
 
   @Get('proxy-health')
   checkHealth(@Req() req: Request, @Res() res: Response) {
-    res.status(200).send('Policies Proxy is healthy');
+    res.status(200).send('Entity Categories Proxy is healthy');
   }
 
   @All(['', '/*'])

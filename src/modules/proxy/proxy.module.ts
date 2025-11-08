@@ -4,6 +4,7 @@ import { MessagesProxyController } from './messages.proxy.controller';
 import { UsersProxyController } from './users.proxy.controller';
 import { ExternalSystemsProxyController } from './external-systems.proxy.controller';
 import { PoliciesProxyController } from './policies.proxy.controller';
+import { EntityCategoriesProxyController } from './entity-categories.proxy.controller';
 
 @Module({
   controllers: [
@@ -12,6 +13,7 @@ import { PoliciesProxyController } from './policies.proxy.controller';
     UsersProxyController,
     ExternalSystemsProxyController,
     PoliciesProxyController,
+    EntityCategoriesProxyController
   ],
 })
 export class ProxyModule {}
