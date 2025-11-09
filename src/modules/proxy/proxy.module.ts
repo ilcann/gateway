@@ -2,7 +2,7 @@ import { Module } from '@nestjs/common';
 import { AuthProxyController } from './auth.proxy.controller';
 import { MessagesProxyController } from './messages.proxy.controller';
 import { UsersProxyController } from './users.proxy.controller';
-import { ExternalSystemsProxyController } from './external-systems.proxy.controller';
+import { SystemsProxyController } from './systems.proxy.controller';
 import { PoliciesProxyController } from './policies.proxy.controller';
 import { EntityCategoriesProxyController } from './entity-categories.proxy.controller';
 import { DepartmentsProxyController } from './departments.proxy.controller';
@@ -13,7 +13,7 @@ import { RolesProxyController } from './roles.proxy.controller';
     AuthProxyController,
     MessagesProxyController,
     UsersProxyController,
-    ExternalSystemsProxyController,
+    SystemsProxyController,
     PoliciesProxyController,
     EntityCategoriesProxyController,
     DepartmentsProxyController,
