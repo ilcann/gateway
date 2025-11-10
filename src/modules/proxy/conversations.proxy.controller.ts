@@ -6,8 +6,8 @@ import { ServicesConfig } from 'src/config/services.config';
 import { AuthGuard } from '@nestjs/passport';
 
 @UseGuards(AuthGuard('jwt'))
-@Controller('messages')
-export class MessagesProxyController {
+@Controller('conversations')
+export class ConversationsProxyController {
   private proxy: (req: Request, res: Response, next?: () => void) => void;
 
   constructor(private configService: ConfigService) {
@@ -20,12 +20,12 @@ export class MessagesProxyController {
     }
     
     this.proxy = createApiProxy({
-      target: services.message.url,
+      target: services.conversations.url,
     });
   }
 
   @All(['', '/*'])
-  proxyMessages(@Req() req: Request, @Res() res: Response) {
+  proxyConversations(@Req() req: Request, @Res() res: Response) {
     this.proxy(req, res);
   }
 }

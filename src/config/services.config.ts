@@ -8,7 +8,7 @@ interface Service {
 
 export interface ServicesConfig {
   auth: Service;
-  message: Service;
+  conversations: Service;
   filter: Service;
   integration: Service;
 }
@@ -19,10 +19,10 @@ export const servicesConfig = registerAs('services', (): ServicesConfig => {
     paths: ['/api/auth', '/api/users'],
   };
 
-  const message: Service = {
-    url: process.env.MESSAGES_SERVICE_URL || 'http://localhost:5001',
-    name: process.env.MESSAGES_SERVICE_NAME || 'message-service',
-    paths: ['/api/messages', '/api/conversations'],
+  const conversations: Service = {
+    url: process.env.CONVERSATIONS_SERVICE_URL || 'http://localhost:5001',
+    name: process.env.CONVERSATIONS_SERVICE_NAME || 'conversations-service',
+    paths: ['/api/conversations'],
   };
 
   const filter: Service = {
@@ -38,7 +38,7 @@ export const servicesConfig = registerAs('services', (): ServicesConfig => {
 
   return {
     auth,
-    message,
+    conversations,
     filter,
     integration,
   };
