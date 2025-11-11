@@ -8,12 +8,12 @@ import { AuthModule } from './modules/auth/auth.module';
 import { jwtConfig } from './config/jwt.config';
 import { NotificationModule } from './modules/notification/notification.module';
 import { BullModule } from '@nestjs/bullmq';
-import { RedisConfig } from './config/redis.config';
+import { redisConfig, RedisConfig } from './config/redis.config';
 
 @Module({
   imports: [
     ConfigModule.forRoot({
-      load: [appConfig, jwtConfig, servicesConfig],
+      load: [appConfig, jwtConfig, redisConfig, servicesConfig],
       isGlobal: true,
     }),
     BullModule.forRootAsync({
