@@ -36,8 +36,8 @@ importers:
         specifier: ^11.1.8
         version: 11.1.8(@nestjs/common@11.1.8(reflect-metadata@0.2.2)(rxjs@7.8.2))(@nestjs/core@11.1.8)(@nestjs/platform-socket.io@11.1.8)(reflect-metadata@0.2.2)(rxjs@7.8.2)
       '@tssx-bilisim/praiven-contracts':
-        specifier: ^1.9.2
-        version: 1.9.2(reflect-metadata@0.2.2)(rxjs@7.8.2)
+        specifier: ^1.9.4
+        version: 1.9.4(reflect-metadata@0.2.2)(rxjs@7.8.2)
       axios:
         specifier: ^1.13.1
         version: 1.13.1
@@ -901,8 +901,8 @@ packages:
   '@tsconfig/node16@1.0.4':
     resolution: {integrity: sha512-vxhUy4J8lyeyinH7Azl1pdd43GJhZH/tP2weN8TntQblOY+A0XbT8DJk1/oCPuOOyg/Ja757rG0CgHcWC8OfMA==}
 
-  '@tssx-bilisim/praiven-contracts@1.9.2':
-    resolution: {integrity: sha512-S7/C+skW1QdlHuno2+ga9Q7DxJvozV8rBpWmqE1qYgGVEOUa1x61aq9mjZSYQd8z3T5kVmmU5ZsZKDtlWtCYsQ==, tarball: https://npm.pkg.github.com/download/@tssx-bilisim/praiven-contracts/1.9.2/87684e2261804ff554fbbf8e2add74250a9f892b}
+  '@tssx-bilisim/praiven-contracts@1.9.4':
+    resolution: {integrity: sha512-HxeHMr8bR3wGFB66iCqliHlaskqAzqFp5kJ8GIgPAFNnM9RnSOa+JcjPSLnLq4cwoTPCFTd4Ez+rIXhq8wd9NA==, tarball: https://npm.pkg.github.com/download/@tssx-bilisim/praiven-contracts/1.9.4/25942cd3bd9c425bdc3c687d9a2cf546a1b2d857}
 
   '@tybys/wasm-util@0.10.1':
     resolution: {integrity: sha512-9tTaPJLSiejZKx+Bmog4uSubteqTvFrVrURwkmHixBo0G4seD0zUxp98E1DzUBJxLQ3NPwXrGKDiVjwx/DpPsg==}
@@ -4337,7 +4337,7 @@ snapshots:
 
   '@tsconfig/node16@1.0.4': {}
 
-  '@tssx-bilisim/praiven-contracts@1.9.2(reflect-metadata@0.2.2)(rxjs@7.8.2)':
+  '@tssx-bilisim/praiven-contracts@1.9.4(reflect-metadata@0.2.2)(rxjs@7.8.2)':
     dependencies:
       '@nestjs/common': 11.1.8(reflect-metadata@0.2.2)(rxjs@7.8.2)
     transitivePeerDependencies:

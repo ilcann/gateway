@@ -32,4 +32,8 @@ export class NotificationGateway implements OnGatewayInit, OnGatewayConnection, 
     console.log(`Client disconnected: ${client.id}`);
     console.log(`Total connected clients: ${sockets.size}`);
   }
+
+  sendToUser(userId: string, event: string, payload: any) {
+    this.server.to(userId).emit(event, payload);
+  }
 }
