@@ -1,4 +1,4 @@
-import { registerAs } from "@nestjs/config";
+import { registerAs } from '@nestjs/config';
 
 interface Service {
   url: string;
@@ -12,6 +12,7 @@ export interface ServicesConfig {
   filter: Service;
   integration: Service;
   metrics: Service;
+  llm: Service;
 }
 export const servicesConfig = registerAs('services', (): ServicesConfig => {
   const auth: Service = {
@@ -40,12 +41,19 @@ export const servicesConfig = registerAs('services', (): ServicesConfig => {
   const metrics: Service = {
     url: process.env.METRICS_SERVICE_URL || 'http://localhost:5004',
     name: process.env.METRICS_SERVICE_NAME || 'metrics-service',
-  }
+  };
+
+  const llm: Service = {
+    url: process.env.LLM_SERVICE_URL || 'http://localhost:5005',
+    name: process.env.LLM_SERVICE_NAME || 'llm-service',
+  };
+
   return {
     auth,
     conversations,
     filter,
     integration,
     metrics,
+    llm,
   };
 });
