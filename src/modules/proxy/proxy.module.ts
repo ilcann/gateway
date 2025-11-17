@@ -4,6 +4,7 @@ import { ConversationsProxyController } from './conversations.proxy.controller';
 import { UsersProxyController } from './users.proxy.controller';
 import { SystemsProxyController } from './systems.proxy.controller';
 import { FilterMetricsProxyController } from './filter-metrics.proxy.controller';
+import { LlmMetricsProxyController } from './llm-metrics.proxy.controller';
 import { PoliciesProxyController } from './policies.proxy.controller';
 import { EntityCategoriesProxyController } from './entity-categories.proxy.controller';
 import { DepartmentsProxyController } from './departments.proxy.controller';
@@ -16,6 +17,7 @@ import { RolesProxyController } from './roles.proxy.controller';
     UsersProxyController,
     SystemsProxyController,
     FilterMetricsProxyController,
+    LlmMetricsProxyController,
     PoliciesProxyController,
     EntityCategoriesProxyController,
     DepartmentsProxyController,
