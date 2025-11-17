@@ -28,10 +28,15 @@ export class NotificationGateway implements OnGatewayInit, OnGatewayConnection, 
       client.disconnect(true);
       return;
     }
-    const user: RequestUser = await this.authService.validateAccessToken(token);
-
-    await client.join(user.userId);
-    console.log(`Client connected: ${client.id}`);
+    try {
+      const user: RequestUser = await this.authService.validateAccessToken(token);
+      this.logger.log(`Client connected: ${user.userId}`);
+      await client.join(user.userId);
+    } catch (error) {
+      this.logger.warn(`Client connection rejected: Invalid access token`);
+      client.disconnect(true);
+      return;
+    }
   }
 
   handleDisconnect(client: Socket) {
