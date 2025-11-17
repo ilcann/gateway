@@ -11,6 +11,7 @@ export interface ServicesConfig {
   conversations: Service;
   filter: Service;
   integration: Service;
+  metrics: Service;
 }
 export const servicesConfig = registerAs('services', (): ServicesConfig => {
   const auth: Service = {
@@ -36,10 +37,15 @@ export const servicesConfig = registerAs('services', (): ServicesConfig => {
     paths: ['/api/external-systems'],
   };
 
+  const metrics: Service = {
+    url: process.env.METRICS_SERVICE_URL || 'http://localhost:5004',
+    name: process.env.METRICS_SERVICE_NAME || 'metrics-service',
+  }
   return {
     auth,
     conversations,
     filter,
     integration,
+    metrics,
   };
 });
