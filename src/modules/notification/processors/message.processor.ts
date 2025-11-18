@@ -33,6 +33,9 @@ export class NotificationProcessor extends WorkerHost {
       case JobNames.MESSAGE_FILTERED:
         await this.notificationService.emitMessageFiltered(data as MessageFilteredJob);
         break;
+      case JobNames.LLM_DRAFT_CREATED:
+        await this.notificationService.emitLlmStarted(data as unknown as { conversationId: string; userId: string; message: any });
+        break;
       case JobNames.LLM_STREAM:
         await this.notificationService.emitLlmStream(data as LlmChunkJob);
         break;

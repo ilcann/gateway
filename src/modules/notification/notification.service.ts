@@ -9,6 +9,10 @@ export class NotificationService {
   async emitMessageFiltered(data: MessageFilteredJob) {
     this.gateway.sendToUser(data.userId, JobNames.MESSAGE_FILTERED, data);
   }
+
+  async emitLlmStarted(data: { conversationId: string; userId: string; message: any }) {
+    this.gateway.sendToUser(data.userId, JobNames.LLM_DRAFT_CREATED, data);
+  }
   
   async emitLlmStream(data: LlmChunkJob) {
     this.gateway.sendToUser(data.userId, JobNames.LLM_STREAM, data);
