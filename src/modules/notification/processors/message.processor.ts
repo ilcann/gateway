@@ -10,6 +10,7 @@ import {
 
 import { Logger } from '@nestjs/common';
 import { NotificationService } from '../notification.service';
+import { LlmChunkJob, LlmDoneJob } from '@tssx-bilisim/praiven-contracts';
 
 /**
  * 'filter-queue'yu dinleyen "İnce" İşlemci (Thin Processor).
@@ -26,13 +27,18 @@ export class NotificationProcessor extends WorkerHost {
     super();
     this.logger.log(`[Worker] Listening to queue: ${QueueNames.MESSAGE_NOTIFICATION_QUEUE}`);
   }
-  async process(job: Job) {
+  async process(job: Job<MessageFilteredJob | LlmChunkJob | LlmDoneJob>) {
+    const data = job.data;
     switch (job.name) {
       case JobNames.MESSAGE_FILTERED:
-        const data: MessageFilteredJob = job.data;
-        await this.notificationService.emitMessageFiltered(data.userId, data);
+        await this.notificationService.emitMessageFiltered(data as MessageFilteredJob);
         break;
-    
+      case JobNames.LLM_STREAM:
+        await this.notificationService.emitLlmStream(data as LlmChunkJob);
+        break;
+      case JobNames.LLM_DONE:
+        await this.notificationService.emitLlmDone(data as LlmDoneJob);
+        break;
       default:
         break;
     }
