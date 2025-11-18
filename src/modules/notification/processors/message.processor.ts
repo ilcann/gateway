@@ -10,7 +10,7 @@ import {
 
 import { Logger } from '@nestjs/common';
 import { NotificationService } from '../notification.service';
-import { LlmChunkJob, LlmDoneJob } from '@tssx-bilisim/praiven-contracts';
+import { LlmChunkJob, LlmDoneJob, LlmStartedJob } from '@tssx-bilisim/praiven-contracts';
 
 /**
  * 'filter-queue'yu dinleyen "İnce" İşlemci (Thin Processor).
@@ -34,7 +34,7 @@ export class NotificationProcessor extends WorkerHost {
         await this.notificationService.emitMessageFiltered(data as MessageFilteredJob);
         break;
       case JobNames.LLM_DRAFT_CREATED:
-        await this.notificationService.emitLlmStarted(data as unknown as { conversationId: string; userId: string; message: any });
+        await this.notificationService.emitLlmStarted(data as LlmStartedJob);
         break;
       case JobNames.LLM_STREAM:
         await this.notificationService.emitLlmStream(data as LlmChunkJob);
